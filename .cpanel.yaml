@@ -1,0 +1,5 @@
+deployment:
+  tasks:
+    - export DEPLOYPATH=/home/u3222044/public_html/sub_domains/api.pusingkuliah.com/
+    - /bin/cp -R public/* $DEPLOYPATH
+    - /bin/cp  public/.htaccess $DEPLOYPATH
