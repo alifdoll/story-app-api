@@ -24,6 +24,8 @@ Route::controller(UserController::class)->group(function () {
     });
 });
 
+
+
 Route::get('test', function () {
     return response()
         ->json([
