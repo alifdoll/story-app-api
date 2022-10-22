@@ -3,6 +3,7 @@
 use App\Http\Controllers\StoryController;
 use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,6 +16,10 @@ use Illuminate\Support\Facades\Route;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
+
+Route::get('test', function () {
+    Artisan::call('storage:link');
+});
 
 Route::controller(UserController::class)->group(function () {
     Route::post('login', 'login');
