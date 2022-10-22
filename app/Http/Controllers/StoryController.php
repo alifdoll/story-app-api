@@ -81,7 +81,10 @@ class StoryController extends Controller
      */
     public function show(Story $story)
     {
-        //
+        return response()->json([
+            'status' => 'success',
+            'data' => new StoryResource($story)
+        ]);
     }
 
     /**
