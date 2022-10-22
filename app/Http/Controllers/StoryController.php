@@ -30,7 +30,29 @@ class StoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validator = $request->validate([
+            'title' => 'required',
+            'description' => 'required',
+            'image' => 'required',
+        ]);
+
+        try {
+            $story = Story::create($request->all());
+            if ($story) {
+                return response()->json([
+                    'status' => "success"
+                ]);
+            } else {
+                return response()->json([
+                    'status' => "fail"
+                ], 400);
+            }
+        } catch (\Throwable $th) {
+            return response()->json([
+                'status' => 'error',
+                'message' =>  $th->getMessage()
+            ], 500);
+        }
     }
 
     /**
