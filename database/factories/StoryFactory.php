@@ -16,7 +16,6 @@ class StoryFactory extends Factory
         return [
             'title' => $this->faker->sentence(1),
             'description' => $this->faker->sentence(10),
-            'image' => "https://doodleipsum.com/700x394/flat?i=36abfe5a9ef31c336bcf57f0dd0bd052"
         ];
     }
 }

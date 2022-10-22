@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\StoryResource;
 use App\Models\Story;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class StoryController extends Controller
 {
@@ -18,7 +20,7 @@ class StoryController extends Controller
         return response()
             ->json([
                 'status' => 'success',
-                'data' => $story
+                'data' => StoryResource::collection($story)
             ]);
     }
 
@@ -37,7 +39,23 @@ class StoryController extends Controller
         ]);
 
         try {
-            $story = Story::create($request->all());
+
+            $image = $request->file('image');
+            if ($image) {
+                $image_name = Str::slug($image->getClientOriginalName()) . ".png";
+                $file_name = auth()->user()->id . '_' . time() . $image_name;
+                $file_path = $image->storeAs('images', $file_name, 'public');
+            }
+
+
+
+
+            $story = Story::create([
+                'title' => request('title'),
+                'description' => request('description'),
+                'image' => $file_path ?? null
+            ]);
+
             if ($story) {
                 return response()->json([
                     'status' => "success"
