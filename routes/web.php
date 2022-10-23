@@ -17,9 +17,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/test', function () {
     $targetFolder = $_SERVER['DOCUMENT_ROOT'] . '/repositories/story-app-api/storage/app/public';
     $linkFolder = $_SERVER['DOCUMENT_ROOT'] . '/storage';
-    // symlink($targetFolder, $linkFolder);
-    // echo 'Symlink process successfully completed';
-    echo $linkFolder;
+    symlink($targetFolder, $linkFolder);
+    echo 'Symlink process successfully completed';
+    // echo $linkFolder;
 });
 
 Route::get('/', function () {
