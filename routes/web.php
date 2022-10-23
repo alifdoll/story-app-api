@@ -19,7 +19,7 @@ Route::get('/test', function () {
     $linkFolder = $_SERVER['DOCUMENT_ROOT'] . '/public/storage';
     // symlink($targetFolder, $linkFolder);
     // echo 'Symlink process successfully completed';
-    echo $targetFolder;
+    echo $linkFolder;
 });
 
 Route::get('/', function () {
