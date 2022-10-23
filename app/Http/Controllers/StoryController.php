@@ -44,7 +44,7 @@ class StoryController extends Controller
             if ($image) {
                 $image_name = Str::slug($image->getClientOriginalName()) . ".png";
                 $file_name = auth()->user()->id . '_' . time() . $image_name;
-                $file_path = $image->storeAs('images', $file_name);
+                $file_path = $image->storeAs('images', $file_name, 'public');
             }
 
 
