@@ -18,6 +18,6 @@ class Story extends Model
 
     public function getImage()
     {
-        return $this->image ? Storage::url($this->image) : "https://doodleipsum.com/700x394/flat?i=36abfe5a9ef31c336bcf57f0dd0bd052";
+        return $this->image ? asset($this->image) : "https://doodleipsum.com/700x394/flat?i=36abfe5a9ef31c336bcf57f0dd0bd052";
     }
 }
